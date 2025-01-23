@@ -24,5 +24,5 @@ async def landing_page() -> Dict:
 
 
 app.include_router(StudentController().create_router())
-# app.include_router(TeacherController().create_router())
-# app.include_router(FacultyController().create_router())
+app.include_router(TeacherController().create_router())
+app.include_router(FacultyController().create_router())
