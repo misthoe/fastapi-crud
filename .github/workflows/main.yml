@@ -44,7 +44,7 @@ jobs:
       - name: Package FastAPI application
         run: |
            mkdir deployment-package
-           cp -r FastAPI/requirements.txt/* deployment-package/
+           cp -r FastAPI/* deployment-package/
            cp lambda_function.py deployment-package/
            cd deployment-package
            zip -r ../lambda_function.zip .
