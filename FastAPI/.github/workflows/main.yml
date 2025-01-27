@@ -35,6 +35,7 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
+          cd ..
           pip install -r requirements.txt
 
       # Step 5: Package app
