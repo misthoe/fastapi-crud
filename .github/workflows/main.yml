@@ -31,13 +31,14 @@ jobs:
           python-version: '3.11'
 
       # Step 4: Install dependencies
-      - name: Install dependencies
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          cd ..
-          cd FastAPI/
-          pip install -r requirements.txt
+      - name: Install Python dependencies
+        uses: py-actions/py-dependency-install@v4
+        with:
+          path: "FastAPI/requirements.txt"
+          update-pip: "false"
+          update-setuptools: "false"
+          update-wheel: "false"
+
 
       # Step 5: Package app
       - name: Package FastAPI application
@@ -57,7 +58,7 @@ jobs:
                 
       
 
-#      # Step 6: Deploy
+#      # Step 6: Deploy 1 11    12
 #      - name: Deploy to AWS Lambda
 #        run: |
 #          source venv/bin/activate
