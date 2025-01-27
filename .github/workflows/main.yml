@@ -45,17 +45,16 @@ jobs:
         run: |
            mkdir deployment-package
            cp -r FastAPI/* deployment-package/
-           cp lambda_function.py deployment-package/
            cd deployment-package
            zip -r ../lambda_function.zip .
 
-      # Step 6 Deploy
-      - name: Deploy to AWS Lambda
-        run: |
-              aws lambda update-function-code \
-              --function-name fastapi-app \
-              --zip-file fileb://lambda_function.zip
-                
+#      # Step 6 Deploy
+#      - name: Deploy to AWS Lambda
+#        run: |
+#              aws lambda update-function-code \
+#              --function-name fastapi-app \
+#              --zip-file fileb://lambda_function.zip
+#
       
 
 #      # Step 6: Deploy 1 11    12
