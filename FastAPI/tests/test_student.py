@@ -1,26 +1,12 @@
-from fastapi import Depends
-from fastapi.testclient import TestClient
-from sqlmodel import Session
-
-from FastAPI.main import app
-from db import get_session, SessionLocal
-from models.student import Student
-
-client = TestClient(app)
+from conftest import client
 
 
-async def create_student(student: Student, session: Session = Depends(get_session)) -> Student:
-    student = Student(name=student.name, last_name=student.last_name, major=student.major, age=student.age)
-    session.add(student)
-    session.commit()
-    session.refresh(student)
-    return student
-
-def test_create_student():
-
+def test_create_student(test_db):
     response = client.post("/student/", json={"name": "John", "last_name": "Doe", "major": "math", "age": 30,
                                               "doctoral_candidate": "false"})
     assert response.status_code == 200
     assert response.json()["name"] == "John"
-
-
+    assert response.json()["last_name"] == "Doe"
+    assert response.json()["major"] == "math"
+    assert response.json()["age"] == 30
+    assert response.json()["doctoral_candidate"] == False
