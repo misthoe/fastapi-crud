@@ -39,8 +39,14 @@ jobs:
           update-setuptools: "false"
           update-wheel: "false"
 
+      # Step 5 Run tests
+      - name: Run pytest
+        run: |
+          cd FastAPI/
+          pytest
 
-      # Step 5: Package app
+
+      # Step 6: Package app
       - name: Package FastAPI application
         run: |
            mkdir deployment-package

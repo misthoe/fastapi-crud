@@ -17,4 +17,4 @@ class TestStudentModel:
         # Needed because model is at table, and ignores validation the normal way
         # Missing arguments should raise ValidationError
         with pytest.raises(ValidationError):
-            Student.validate(student_data)
+            Student.model_validate(student_data)
